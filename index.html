@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graham Buddies — Your Sweetest Buddy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<!-- PyScript (documented release). Python logic lives in main.py -->
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+</head>
+<body>
+<header>
+ <nav aria-label="Main">
+  <a class="logo" href="#home" aria-label="Graham Buddies — back to top"><img src="logo.jpg" alt="Graham Buddies logo: two smiling graham crackers"></a>
+  <div class="right">
+   <ul class="links" id="nav-links">
+    <li><a href="#home" class="on">Home</a></li>
+    <li><a href="#menu">Our Menu</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+   </ul>
+   <button class="cartbtn" id="open-cart" aria-label="Open shopping cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.2a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg>
+    <span id="cart-count">0</span>
+   </button>
+   <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+   </button>
+  </div>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <svg class="drip l" viewBox="0 0 150 130" aria-hidden="true"><path d="M0 0h150c-6 22-30 20-34 40-3 16 8 40-8 40s-8-24-22-28c-18-5-30 6-34 30-3 16-22 14-24-4C26 62 10 58 0 70Z"/></svg>
+ <svg class="drip r" viewBox="0 0 150 130" aria-hidden="true"><path d="M0 0h150c-6 22-30 20-34 40-3 16 8 40-8 40s-8-24-22-28c-18-5-30 6-34 30-3 16-22 14-24-4C26 62 10 58 0 70Z"/></svg>
+ <img class="hero-img" src="Header.jpg" alt="Layered Mango Graham dessert in a glass with mango slices, cream and graham crumbs">
+ <div class="wrap hero-copy">
+  <div>
+   <p class="eyebrow">Graham Buddies · Your Sweetest Buddy</p>
+   <h1>Layers of Happiness in Every Bite.</h1>
+   <p>Meet your new favorite dessert buddy! Enjoy creamy Mango Graham layered with sweet mango goodness and irresistible graham crunch.</p>
+   <div class="cta"><a class="btn btn-y" href="#menu">Order Now</a><a class="btn btn-o" href="#menu">Explore Our Menu</a></div>
+  </div>
+ </div>
+</section>
+
+<section class="video" id="video">
+ <div class="wrap">
+  <h2>A Little Sweetness, A Lot of Happiness!</h2>
+  <p class="center">Discover the creamy, fruity goodness that makes every Graham Buddies treat special.</p>
+  <div class="vbox">
+   <!-- To use a real ad: put it at promo.mp4 and set VIDEO_URL in main.py -->
+   <video id="promo" controls preload="none" poster="logo.jpg" hidden aria-label="Graham Buddies promotional video"></video>
+   <div class="vph" id="video-placeholder">
+    <div>
+     <h3>Promo video placeholder</h3>
+     <p>No advertisement has been added yet. Add a 15–30 second MP4 as <code>promo.mp4</code>, or preview a local file now.</p>
+     <label class="btn btn-y" id="video-pick" tabindex="0">Choose video file<input type="file" id="video-file" accept="video/*" hidden></label>
+    </div>
+   </div>
+  </div>
+  <p class="center strong">Grab a Graham Buddy Today!</p>
+ </div>
+</section>
+
+<section id="menu">
+ <div class="wrap">
+  <h2>Meet Your Graham Buddies!</h2>
+  <div class="filters" id="filters" role="group" aria-label="Filter products">
+   <button class="chip on" data-filter="all">All</button>
+   <button class="chip" data-filter="Cups">Cups</button>
+   <button class="chip" data-filter="Tubs">Tubs</button>
+   <button class="chip" data-filter="Specials">Specials</button>
+  </div>
+  <div class="grid" id="product-grid"></div>
+ </div>
+</section>
+
+<section class="about alt" id="about">
+ <div class="wrap two">
+  <div>
+   <h2 class="left">More Than a Dessert, We’re Your Sweetest Buddy!</h2>
+   <p>Graham Buddies is a dessert business focused on Mango Graham: creamy layers, sweet mango and crunchy graham, made for sharing with friends and family.</p>
+  </div>
+  <div class="crackers" aria-hidden="true"><div class="cr"></div><div class="cr"></div><div class="cr"></div></div>
+ </div>
+</section>
+
+<section id="why">
+ <div class="wrap">
+  <h2>Why You’ll Love Our Graham Buddies</h2>
+  <div class="grid">
+   <div class="hcard"><div class="ico" aria-hidden="true">◐</div><h3>Creamy Mango Goodness</h3><p>Sweet mango paired with smooth, creamy dessert layers.</p></div>
+   <div class="hcard"><div class="ico" aria-hidden="true">▦</div><h3>Delicious Graham Layers</h3><p>Graham texture in every layered spoonful.</p></div>
+   <div class="hcard"><div class="ico" aria-hidden="true">♡</div><h3>Sweet Moments Worth Sharing</h3><p>A treat for friends and family.</p></div>
+   <div class="hcard"><div class="ico" aria-hidden="true">★</div><h3>A Buddy for Every Craving</h3><p>Different sizes and options to choose from.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="alt" id="reviews">
+ <div class="wrap">
+  <h2>Sweet Words from Our Customers</h2>
+  <p class="center"><strong>Sample content</strong> — replace with real customer feedback before publishing.</p>
+  <div class="grid">
+   <blockquote class="hcard"><span class="tagx">Sample</span><p>“Sample review text goes here.”</p><footer>— Customer name</footer></blockquote>
+   <blockquote class="hcard"><span class="tagx">Sample</span><p>“Sample review text goes here.”</p><footer>— Customer name</footer></blockquote>
+   <blockquote class="hcard"><span class="tagx">Sample</span><p>“Sample review text goes here.”</p><footer>— Customer name</footer></blockquote>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="wrap narrow">
+  <h2>Contact Us</h2>
+  <form id="contact-form" class="f" novalidate>
+   <label>Your name<input id="c-name" autocomplete="name"></label>
+   <label>Email or contact number<input id="c-contact" autocomplete="email"></label>
+   <label>Message or order inquiry<textarea id="c-message" rows="4"></textarea></label>
+   <span id="c-count" class="hint">0 / 300 characters</span>
+   <button class="btn btn-y" type="submit">Send inquiry</button>
+   <p id="c-result" class="msg" role="status" hidden></p>
+  </form>
+  <p class="hint center">Demo only: there is no backend, so inquiries are not sent to the business.</p>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap fgrid">
+  <div><a class="logo" href="#home" aria-label="Graham Buddies — back to top"><img src="logo.jpg" alt="Graham Buddies logo"></a><p class="tag">Your Sweetest Buddy</p></div>
+  <div><h3>Explore</h3><ul><li><a href="#home">Home</a></li><li><a href="#menu">Our Menu</a></li><li><a href="#about">About Us</a></li><li><a href="#contact">Contact</a></li></ul></div>
+  <div><h3>Contact</h3><ul><li>GrahamBuddiesv1@gmail.com</li><li>+639628394538</li><li>40 Leon Kilat Street, Cebu City, 6000 Cebu</li></ul></div>
+  <div><h3>Follow</h3><ul><li><a href="#">Facebook (add link)</a></li><li><a href="#">Instagram (add link)</a></li><li><a href="#">TikTok (add link)</a></li></ul></div>
+ </div>
+ <p class="copy">© 2026 Graham Buddies. All rights reserved.</p>
+</footer>
+
+<div id="overlay"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<aside id="cart-panel" aria-label="Shopping cart" aria-hidden="true">
+ <div class="ph2"><h2>Your Cart</h2><button class="x" id="close-cart" aria-label="Close cart">✕</button></div>
+ <div id="cart-lines"></div>
+ <div class="sums">
+  <div><span>Subtotal</span><span id="cart-subtotal">₱0</span></div>
+  <div><span>Delivery fee</span><span id="cart-fee">₱0</span></div>
+  <div class="grand"><span>Total</span><span id="cart-total">₱0</span></div>
+ </div>
+ <form id="order-form" class="f" novalidate hidden>
+  <p class="demo"><strong>Demo checkout.</strong> No backend or payment is connected, so no real order is placed.</p>
+  <label>Name<input id="o-name" autocomplete="name"></label>
+  <label>Email or contact number<input id="o-contact"></label>
+  <label>Preference<select id="order-mode"><option value="Delivery">Delivery</option><option value="Pickup">Pickup</option></select></label>
+  <label id="o-address-wrap">Delivery address<textarea id="o-address" rows="2"></textarea></label>
+  <label>Payment method<select id="o-payment"><option>Cash on delivery / pickup</option><option>GCash</option><option>Bank transfer</option></select></label>
+  <button class="btn btn-y" type="submit">Place demo order</button>
+ </form>
+ <button class="btn btn-y" id="go-checkout" hidden>Proceed to checkout</button>
+ <p id="o-result" class="msg" role="status" hidden></p>
+</aside>
+
+<!-- All interactivity is Python: see main.py -->
+<script type="py" src="./main.py"></script>
+</body>
+</html>
