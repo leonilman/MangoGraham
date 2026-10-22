@@ -10,12 +10,12 @@ EVENT DELEGATION: one handler on the parent container checks which child was use
 import asyncio
 from pyscript import document, when, window
 
-# ---------------------------------------------------------------- settings
+
 DELIVERY_FEE = 50          # pesos, charged only for Delivery (edit me)
 MAX_QTY = 99
 VIDEO_URL = ""             # e.g. "promo.mp4" once you have a real ad
 
-# ---------------------------------------------------------------- data (edit prices here)
+
 PRODUCTS = [
     {"id": 1, "name": "Classic Mango Graham Cup", "category": "Cups", "price": 49, "size": "sm", "img": "MangoGrahamCup.jpg", "alt": "Three Mango Graham cups topped with cream, mango pieces and graham crumbs", "focus": "50% 50%",
      "desc": "A single-serving Mango Graham dessert.",
@@ -31,10 +31,10 @@ PRODUCTS = [
      "details": "A special variation with additional mango and graham toppings."},
 ]
 
-cart = {}  # application state: {product_id: quantity}
+cart = {}  
 
 
-# ---------------------------------------------------------------- helper (pure) functions
+
 def peso(amount):
     """Format a number as Philippine pesos, e.g. 1234 -> ₱1,234."""
     return f"₱{amount:,}"
